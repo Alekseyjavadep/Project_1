@@ -7,11 +7,10 @@ public class Authentication {
         Pattern pattern = Pattern.compile("^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$");
         Matcher matcher = pattern.matcher(password);
         boolean isPassword = matcher.matches();
-        if (isPassword == true){
+        if (isPassword){
             return;
         }
         else System.out.println("Ошибка, введите снова");
-        //check_password(password);
         Scanner sc = new Scanner(System.in);
         String password1 = sc.nextLine();
         check_password(password1);
@@ -23,17 +22,20 @@ public class Authentication {
         if (isEmail == true){
             return;
         } else System.out.println("Ошибка, введите снова");
-        check_email(email);
+        Scanner sc = new Scanner(System.in);
+        String email_new = sc.next();
+        check_email(email_new);
     }
     void check_login(String login) {
-        Pattern pattern = Pattern.compile("^[a-z]+([-_]?[a-z0-9]+){0,2}$");
+        Pattern pattern = Pattern.compile("^[A-Za-z]([.A-Za-z0-9-]{1,18})([A-Za-z0-9])$");
         Matcher matcher = pattern.matcher(login);
         boolean isLogin = matcher.matches();
-        if (isLogin == true){
-            System.out.println("Вы успешно зарегистрировались!");
+        if (isLogin){
             return;
         } else System.out.println("Ошибка, введите снова");
-        check_login(login);
+        Scanner sc = new Scanner(System.in);
+        String login_new = sc.next();
+        check_login(login_new);
     }
 
 }
